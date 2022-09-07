@@ -92,7 +92,7 @@ much more than I had anticipated - combinatorics can sure be surprising sometime
 
 Note that in the end for simplicity I actually decided to just ignore the “in between” Postgres versions and look only at v10 and v15 for now as it seemed a bit too much work to actually summarise it nicely…hope to tackle it in the future though and you have the full data [here](https://github.com/kmoppel/pg-perf-test-v10-v15/blob/main/pgss_results_dump.sql), so feel free to knock yourself out there or do some fact-check for below numbers if you have the time.
 
-| Query                                                | Mean exec time (ms) | Exec time change (%) | Stddev change (%) |
+| Query                                                | Mean exec time for v15 (ms) | Exec time change (%) | Stddev change (%) |
 |:-----------------------------------------------------|:--------------------|:-----------------|:-|
 | SELECT abalance FROM pgbench_accounts WHERE aid = $1 | 0.01 | 6.72 | 5.24 |
 | UPDATE pgbench_accounts SET abalance = abalance + $1 WHERE aid = $2 | 7.17 | 18.9 | 5.0 |
@@ -149,7 +149,7 @@ Ok phew, now to the hard part - so what did I actually learn from this exercise,
 
 * Remember that I tested a **v15 Beta 2** release (Beta 3 was sadly release soon after I started my testing)
 * After excluding the query with the above detailed planner anomaly from test results **there was a speedup of only 4% over all queries and scales**. Not much? Yes. Surprising? No - pretty much logical actually as PostgreSQL has been rock solid and (mostly) well optimized the whole decade I’ve been working with it! Also it was a very static, mostly read-only and almost “in-memory” test setup where many recent major optimizations (index de-duplication, bottom up index cleanups etc) couldn’t surface.
-* Postgres planner is not the most complex one out there - it can still misjudge things, so as ever, it’s essential to know your way around EXPLAIN plan, planner constants and certain constructs (like LATERAL) that nudge Postgres towards a plan of your liking.
+* Postgres planner is not the most complex one out there - it can still misjudge things, so **as ever, it’s essential to know your way around EXPLAIN plan, planner constants and certain constructs** (like LATERAL) that nudge Postgres towards a plan of your liking.
 * Query protocol (plain SQL vs prepared statements) still plays a huge role for smaller / faster queries - the 2 non-analytical **simple indexed-access queries got a 20% and 50% boost just by using prepared statements!** Nothing new here of course , but just to repeat :)
 * **Seems cloud VMs cannot be considered too trustworthy for such relatively short-running tests** - the statistical Coefficient of Variation (~7%) over all queries / scales over different 5 hosts was actually higher than the measured Postgres speedup of 4% (excluding the outlier query)...so next time I’ll still spin up some real hardware again.
 * **All in all a very decent performance from good old v10**, which will actually be EOL-ed already in a few months! So those still running on that in a safe network (no security updates, remember!) and don’t want to take that downtime to upgrade, don't have to worry too much about performance part at least.
