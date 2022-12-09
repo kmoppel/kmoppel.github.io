@@ -174,9 +174,9 @@ if you want to re-run on your own hardware.
 ## Learnings / thoughts
 
 * All index methods basically provided acceptable OLTP response times for our smallish 10M rows (in memory) test case.
-* Covering indexes also provide a very good response time, and it might make sense for older Postgres versions (v11, v12)
-  where index de-duplication was not available - otherwise the larger size makes them much less attractive. They might be
-  faster for heavy UPDATE use cases though as in theory the structure is simpler - no sorting needed (didn’t look into it though).
+  * Covering indexes also provide a very good response time, and it might make sense for older Postgres versions (v11, v12)
+    where index de-duplication was not available - otherwise the larger size makes them much less attractive. They might be
+    faster for heavy UPDATE use cases though as in theory the structure is simpler - no sorting needed for the 2nd column (didn’t look into it though).
 * The testset was too small to show benefits of hash indexes (and probably also the cardinality too low) - the dataset size
   should have been probably 100x or more or just should have tested on much slower disks. Hope to test that in the future,
   but still surprisingly close to normal B-tree merge so there might be some potential there - as remember - hash means O(1)
