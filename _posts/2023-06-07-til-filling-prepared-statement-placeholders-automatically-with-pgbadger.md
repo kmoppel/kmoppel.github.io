@@ -13,9 +13,9 @@ using pgbadger :bulb:
 
 When some app uses the extended query protocol / prepared statements to query Postgres (which you generally should for performance reasons) and get
 for some reason query errors or just cross the "slow query log" threshold (`log_min_duration_statement` config parameter),
-you will not get full executable statements in the query log! But rather 2 pieces - a query with dollar-stype placeholders
+you will not get full executable statements in the query log! But rather 2 pieces - a query with dollar-type placeholders
 and after that a list of actual parameter values - that you then need to "fill in" if you want to actually re-run the
-query and see why this particular parameter values combination was slow for example.
+query (with EXPLAIN ANALYZE mostly) and see why this particular parameter values combination was slow for example.
  
 # The solution
 
@@ -79,6 +79,9 @@ SELECT abalance FROM pgbench_accounts WHERE aid = '93026';
 SELECT abalance FROM pgbench_accounts WHERE aid = '26950';
 ```
 
-**PS!** Note that actual parameter values are not always guaranteed to be there, as they can be disabled for sensitive environments
+**PS** Note here that if the pgbadger call fails or doesn't get the correct result, it might be that the log format autodetection
+is in trouble (works correctly mostly though!) and needs some helping out via the `--prefix` parameter. 
+
+**PS 2** Also note that actual prepared statement parameter values are not always guaranteed to be there, as they can be disabled for sensitive environments
 via the relatively unknown `log_parameter_max_length` and `log_parameter_max_length_on_error` parameters - in that case of
-course not even the almighty pgbadger with its 100 parameters cannot help you :smirk:
+course not even the almighty pgbadger with its 100 parameters can help you :smirk:
