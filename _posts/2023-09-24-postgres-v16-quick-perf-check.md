@@ -64,7 +64,7 @@ So fast-forward 10 days - I started to eagerly check the results...and after dou
 disappointed - they were literally the most uninteresting test results I've ever gotten, not much change at all! We're talking
 about a few percentages here and there for most query + scale + partitions configurations, and **a total of ~1.2% overall
 improvement** over all 6 different queries. Interestingly the total standard deviation on the other hand increased by a percentage,
-but as most queries executed in ~100ms, I guess could be normal measuring variance. 
+but as most queries executed in ~1ms, I guess could be normal measuring variance. 
 For a total runtime of 20 days (10d on 2 nodes) I'd say this is some pretty impressive stability still in any case!
 
 So yeah, this time no point even to paste the results table here, too boring, will save you some time :)
@@ -86,10 +86,13 @@ As already pointed out - **"sadly" not much to say this time**:
 * Postgres has become so stable seems, that it has become very hard to squeeze out anything from the most common OLTP queries
 * v16 did a tiny bit better in "key-range access" execution times (~7%)
 * v16 did a tiny bit worse in "in-memory random key reads with no partitions" execution times (~10%)
+* Partitioning (0 vs 16 vs 128 was tested) did influence the query runtimes (~12%) in a negative way for this disk-light testing.
+  In regards to v16 though, it again performed minimally (around ~2%) better with partitions.
+  - The reason for this degradation seems to be lower Shared Buffer hit rates - not sure what's the root cause there though.
 
 And as testing is a tricky exercise, some departing words - note that:
 
 * It's an artificial testset with still a pretty short runtime of 4h per pgver / query / scale / partitions combination
 * Hardware and dataset-to-memory ratio are as important as ever and one should try to test close to their data size and use
-  close-to-domain tables and queries
+  close-to-domain tables and queries - this test didn't touch disk much
 * These six tested queries represent a fraction of typical SQL constructs + amount of rows touched per query
