@@ -8,7 +8,7 @@ tags: [postgres, initdb, rds]
 Today again a nice finding after 12 years with Postgres - seems one can actually retrieve the time when a cluster / instance
 was once initialized! Given of course you haven't dump-restored or in-place upgraded the instance in the mean time...
 
-So far on those rare occasions when I've actually had to look up something like that () - I've worked around it (as not reported
+So far on those rare occasions when I've actually had to look up something like that I've worked around it (as not reported
 by *pg_controldata* also for example) by either:
  
 * digging into version control
