@@ -115,14 +115,14 @@ After looking at the test (full SQL dump of my results table [here](https://gist
   fitting into the top bracket for all tested datasets
 * The only artificial dataset in the bunch (pgbench) stood out well - it was the only one where *gzip* was the best
 * Note that it was not a multi-core test and things could look differently for `pg_dump --format=directory` with a few *jobs*
-  - The annoying thing (from benchmarking point of view) with the *directory* mode is though that we can't pipe to `/dev/null`
+  - The annoying thing (from benchmarking point of view) with the *directory* mode is though that we can't pipe to `/dev/null` (I actually piped to `wc -c` though to get the dump size)
     and the filesystem writing will possibly start to play a role. Something like [nullfsvfs](https://github.com/abbbi/nullfsvfs)
     looks promising though to bypass that, need to test that
 * Note that I didn't test the full range of compression levels but with a small stride, to minimize the runtime a bit
-* Note that restore times were not tested (as it starts to depend a lot more on hardware and a few Postgres config settings)
-  \- so if you indeed plan to use `pg_dump` for operational aspects, double-check
-  that.
-  - But also as noted in the intro, remember that dumps should not be the default backup strategy
+* Note that restore times were not tested as it's actually a way more rare thing to do, thus less relevant and it also starts to
+  depend a lot more on hardware and a few Postgres config settings and you won't be typically bottlenecked there on the decompression
+  side. But if you indeed plan to use `pg_dump` with compression for operational aspects, double-check that for sure.
+  - Remember though (as noted also in the intro) - dumps should not be the default backup strategy!
 * The test data showed that with *zstd* it can happen that higher compression levels actually increase the output size 🤯
   Which though to my surprising seems to be ["normal"](https://github.com/facebook/zstd/issues/3793)
 
