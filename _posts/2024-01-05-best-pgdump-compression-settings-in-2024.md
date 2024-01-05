@@ -128,8 +128,9 @@ After looking at the test (full SQL dump of my results table [here](https://gist
 
 # Request for Postgres open datasets suggestions 
 
-Do you know of any cool real life "ready-to-load-into-postgres" datasets available on the interwebs? Please let me know or 
-even better open a PR in the project [repo](https://github.com/kmoppel/pg-open-datasets)! Thank you!
+Do you know of any cool real life "ready-to-load-into-postgres" datasets available on the interwebs? Please let me know via
+a Github Issue or even better open a more complete PR in the project repo [https://github.com/kmoppel/pg-open-datasets](https://github.com/kmoppel/pg-open-datasets)!
+Thank you!
 
 ## A notice on availability for consulting 
 
