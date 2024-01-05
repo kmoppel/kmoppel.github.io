@@ -36,7 +36,7 @@ This required a bit of head-scratching actually...how does best compression look
 As I'm not exactly a statistician I decided to ignore some more complex statistical models and go for the simplest thing that made
 sense to - by equally prioritizing speed and output size. In short - I normalized all test runs against both the shortest time
 and smallest output byte size (in context of each dataset) and just summed the normalized values together to get a "score" or a "grade",
-where lower is better) for a particular method and level, per dataset. Meaning a perfect score would be 2 - having both the smallest
+(where lower is better) for a particular method and level, per dataset - meaning a perfect score would be 2 - having both the smallest
 output and fastest execution.
 
 I do hope this calculation flies, but just in case the [SQL](https://gist.github.com/kmoppel/3fe12db152fd38a0a98bd7de35bf7feb#file-pg_dump_compression_method_level_score-sql)
@@ -44,7 +44,8 @@ for you to check and ping me if very off.
 
 ## By both speed + size normalized scores avg rank per dataset
 
-Out of 17 different method + level combinations
+Out of 17 different method + level combinations. Note that the score has been turned to a rank here, as they varied
+quite a bit and would be harder to mentally visualize I guess. 
 
 | method | level | avg_per_dataset_rank |
 |:-------|:------|:---------------------|
