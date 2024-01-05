@@ -24,6 +24,14 @@ FYI - note that `pg_dump` is not a great primary backup method against operation
 
 The by-catch framework that I accidentally developed for this compression test can be found on [Github](https://github.com/kmoppel/pg-open-datasets)
 
+Basically it downloads / extracts / transforms / loads some openly available Postgres datasets and runs a test script on
+the resulting database that runs a loop of `pg_dump` with different compression settings. Tested were below settings
+defined [here](https://github.com/kmoppel/pg-open-datasets/blob/main/tests/pg_dump_compression.sh#L9)
+
+```
+METHOD_LVLS="gzip:1 gzip:3 gzip:5 gzip:7 gzip:9 lz4:1 lz4:3 lz4:5 lz4:7 lz4:9 lz4:11 zstd:1 zstd:5 zstd:9 zstd:13 zstd:17 zstd:21"
+```
+
 *PS* If you plan to run the script yourself, note that it will take half a day and download ~7GB over the internet
 and require ~100GB of disk space with default settings. If low on storage, set `DROP_DB_AFTER_TESTING=1` to drop all restored
 DBs right after running the compression test.
