@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Best pg_dump compression settings for Postgres in 2024
-cover-img: /assets/img/til-when-was-my-postgres-cluster-initialized.png
+cover-img: /assets/img/elephants_books_pg_dump_compression.png
 tags: [postgres, pgdump, backups, performance]
 ---
 
@@ -43,6 +43,8 @@ I do hope this calculation flies, but just in case the [SQL](https://gist.github
 for you to check and ping me if very off.   
 
 ## By both speed + size normalized scores avg rank per dataset
+
+Out of 17 different method + level combinations
 
 | method | level | avg_per_dataset_rank |
 |:-------|:------|:---------------------|
@@ -99,7 +101,7 @@ After looking at the test (full SQL dump of my results table [here](https://gist
 * Lower compression levels (1-5) for *zstd* offer the best bang for buck over all tested 6 datasets
 * *zstd* also has the highest compression rates when using higher compression levels
 * *lz4* in lower levels is the fastest option, at the cost of higher dump sizes of course (50-100% on average)
-* Higher compression level really don't offer much besides warming the planet a bit
+* Higher compression level really don't offer much besides warming the planet
 * My personal current Postgres `pg_dump` default compression of *gzip* level 3 is still an OK performer both time and size wise,
   fitting into the top bracket for all tested datasets
 * The only artificial dataset in the bunch (pgbench) stood out well - it was the only one where *gzip* was the best
@@ -120,4 +122,7 @@ After looking at the test (full SQL dump of my results table [here](https://gist
 Do you know of any cool real life "ready-to-load-into-postgres" datasets available on the interwebs? Please let me know or 
 even better open a PR in the project [repo](https://github.com/kmoppel/pg-open-datasets)! Thank you!
 
-FYI - as of new year I'm also up for some consulting on all matters around Postgres / databases in general. 
+## A notice on availability for consulting 
+
+A small FYI to end this one - as of now I'm also up for short-term consulting on all matters around Postgres, please take
+a look [here](https://kmoppel.github.io/aboutme/) for some topics I have experience with if feel like needing some help :)
