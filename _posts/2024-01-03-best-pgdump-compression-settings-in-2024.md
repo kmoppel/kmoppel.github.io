@@ -16,15 +16,15 @@ But the topic piqued my interest and made me experiment a bit...but hell, how to
 to benchmark against? Well, I guess the only way to get something of sorts would be to try to scrape together some real life
 datasets and run some tests on them, and see if something stands out consistently!
 
-*TLDR;* - The newer compression methods, especially *zstd* indeed should be the new default for `pg_dump` compression for most datasets.
+*TLDR;* - *zstd* indeed should be the new default `pg_dump` compression method for most datasets.
 
-PS Note that `pg_dump` is not a great primary backup method against operational threats   
+FYI - note that `pg_dump` is not a great primary backup method against operational threats though!
 
 ## The test framework
 
-The by-catch framework that I accidentally developed for this compression test can be found [here](https://github.com/kmoppel/pg-open-datasets)
+The by-catch framework that I accidentally developed for this compression test can be found on [Github](https://github.com/kmoppel/pg-open-datasets)
 
-*PS* If you plan to run the script yourself, note that it will take almost a day and download ~7GB over the internet
+*PS* If you plan to run the script yourself, note that it will take half a day and download ~7GB over the internet
 and require ~100GB of disk space with default settings. If low on storage, set `DROP_DB_AFTER_TESTING=1` to drop all restored
 DBs right after running the compression test.
 	
@@ -40,7 +40,7 @@ where lower is better) for a particular method and level, per dataset. Meaning a
 output and fastest execution.
 
 I do hope this calculation flies, but just in case the [SQL](https://gist.github.com/kmoppel/3fe12db152fd38a0a98bd7de35bf7feb#file-pg_dump_compression_method_level_score-sql)
-for you to check and ping me if very off. 
+for you to check and ping me if very off.   
 
 ## By both speed + size normalized scores avg rank per dataset
 
@@ -67,28 +67,30 @@ for you to check and ping me if very off.
 
 ## Fastest per dataset 
 
-| dataset_name            | method | level | time_spent_s | avg_time_spent_s | dump_size |
-|:------------------------|:-------|:------|:-------------|:-----------------|:----------|
-| imdb                    | lz4    | 1     | 19.2         | 254.1            | 2004 MB   |
-| mouse_genome            | lz4    | 1     | 209.6        | 1807.9           | 6644 MB   |
-| osm_australia           | lz4    | 1     | 32.4         | 695.7            | 5434 MB   |
-| pgbench                 | gzip   | 3     | 25.3         | 417.8            | 277 MB    |
-| postgrespro_demodb_big  | zstd   | 1     | 5.1          | 55.7             | 239 MB    |
-| stackexchange_askubuntu | lz4    | 1     | 10.5         | 259.5            | 1988 MB   |
+| dataset_name            | method | level | time_spent_s | avg_time_spent_s | dump_size | avg_dump_size |
+|:------------------------|:-------|:------|:-------------|:-----------------|:----------|-----------------|
+| imdb                    | lz4    | 1     | 19.2         | 254.1            | 2004 MB   | 1315 MB         |
+| mouse_genome            | lz4    | 1     | 209.6        | 1807.9           | 6644 MB   | 4211 MB         |
+| osm_australia           | lz4    | 1     | 32.4         | 695.7            | 5434 MB   | 3655 MB         |
+| pgbench                 | gzip   | 3     | 25.3         | 417.8            | 277 MB    | 278 MB          |
+| postgrespro_demodb_big  | zstd   | 1     | 5.1          | 55.7             | 239 MB    | 256 MB          |
+| stackexchange_askubuntu | lz4    | 1     | 10.5         | 259.5            | 1988 MB   | 1317 MB         |
 
 ## Smallest output per dataset
 
-| dataset_name            | method | level | time_spent_s | dump_size | avg_dump_size |
-|:------------------------|:-------|:------|:-------------|:----------|:--------------|
-| imdb                    | zstd   | 13    | 225.2        | 1035 MB   | 1315 MB       |
-| mouse_genome            | zstd   | 21    | 18540.3      | 2261 MB   | 4211 MB       |
-| osm_australia           | zstd   | 17    | 1829.0       | 2356 MB   | 3655 MB       |
-| pgbench                 | gzip   | 9     | 59.8         | 263 MB    | 278 MB        |
-| postgrespro_demodb_big  | zstd   | 21    | 409.1        | 169 MB    | 256 MB        |
-| stackexchange_askubuntu | zstd   | 9     | 95.7         | 1008 MB   | 1317 MB       |
+| dataset_name            | method | level | time_spent_s | avg_time_spent_s | dump_size | avg_dump_size |
+|:------------------------|:-------|:------|:-------------|------------------|:----------|:--------------|
+| imdb                    | zstd   | 13    | 225.2        | 254.1            | 1035 MB   | 1315 MB       |
+| mouse_genome            | zstd   | 21    | 18540.3      | 1807.9           | 2261 MB   | 4211 MB       |
+| osm_australia           | zstd   | 17    | 1829.0       | 695.7            | 2356 MB   | 3655 MB       |
+| pgbench                 | gzip   | 9     | 59.8         | 417.8            | 263 MB    | 278 MB        |
+| postgrespro_demodb_big  | zstd   | 21    | 409.1        | 55.7             | 169 MB    | 256 MB        |
+| stackexchange_askubuntu | zstd   | 9     | 95.7         | 259.5            | 1008 MB   | 1317 MB       |
 
+## Test hardware
 
-
+Test machine this time was my workstation with an AMD Ryzen 5950X inside, Ubuntu Linux in perf CPU mode and with 32GB
+of RAM - meaning all datasets except *mouse_genome* should be fully cached and the results not significantly disk affected.    
 
 ## Summary
 
@@ -97,6 +99,7 @@ After looking at the test (full SQL dump of my results table [here](https://gist
 * Lower compression levels (1-5) for *zstd* offer the best bang for buck over all tested 6 datasets
 * *zstd* also has the highest compression rates when using higher compression levels
 * *lz4* in lower levels is the fastest option, at the cost of higher dump sizes of course (50-100% on average)
+* Higher compression level really don't offer much besides warming the planet a bit
 * My personal current Postgres `pg_dump` default compression of *gzip* level 3 is still an OK performer both time and size wise,
   fitting into the top bracket for all tested datasets
 * The only artificial dataset in the bunch (pgbench) stood out well - it was the only one where *gzip* was the best
