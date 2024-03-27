@@ -19,6 +19,8 @@ A nice day to hack on something, right ??
 
 Contact: $firstname dot $lastname at dzeemail
 
+[![](/assets/img/linkedin.svg)](https://www.linkedin.com/in/kaarelmoppel/)
+
 #### Disclaimer
 
 All opinions are strictly mine and do not represent any employer.
