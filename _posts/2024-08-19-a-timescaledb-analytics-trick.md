@@ -80,7 +80,7 @@ m1.large  7.5 GiB 2 vCPUs 840 GB (2 * 420 GB HDD)
 **Postgres**: 16.4 + Postgres config tuned with [timescaledb-tune](https://docs.timescale.com/self-hosted/latest/configuration/timescaledb-tune/)
 for the given hardware 
 
-**Dataset**: 200B rows of pgbench_accounts data with an extra synthetic timestamp column, needed for TimescaleDB chunking,
+**Dataset**: 200M rows of pgbench_accounts data with an extra synthetic timestamp column, needed for TimescaleDB chunking,
 26GB (pre-compression) i.e. 4x RAM, meaning pretty small
 
 **Query**: Calculating the average account balance per branch i.e. a full dataset GROUP BY -
@@ -110,5 +110,5 @@ considered cool or modern…feel free to voice your opinion below in the comment
 In short - just wanted to refresh your memory that “tech things™”, including Postgres, are for the most part built like 
 onions - and one can mess around with the layers a bit…given you know what you’re doing of course :)
 
-Also on that note - feel free to [contact](https://kmoppel.github.io/aboutme/) me if need a hand with Postgres - I’ve
-been working with Postgres daily for the last 10+ years with some of the most Postgres-heavy companies in Europe.
+*Also on that note - feel free to [contact](https://kmoppel.github.io/aboutme/) me if need a hand with Postgres - I’ve
+been working with Postgres daily for the last 10+ years with some of the most Postgres-heavy companies in Europe.*
