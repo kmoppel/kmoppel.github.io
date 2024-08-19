@@ -3,24 +3,26 @@ layout: page
 title: About me
 ---
 
-Giving a crack at databases / Postgres since 2007...Independent Postgres Consultant
+A freelance Postgres Consultant.
 
-A nice day to hack on something, right ??
+I’ve been working with Postgres daily for the last 10+ years with many very Postgres-heavy companies in Europe,
+like Zalando, BMW, Klarna, Cognite.
 
-## Consulting services
+## Postgres Consulting services
 
 * Performance troubleshooting & tuning
-* Postgres HA setups
 * Performance-friendly database design
+* HA setups / replication
 * Security / operational auditing
 * Backup / recovery procedures
-* Testdata generation
+* Monitoring
+* Data migrations
+* Trainings
 * DB-related tooling development
 
-Contact: $firstname dot $lastname at dzeemail
-
-[![](/assets/img/linkedin.svg)](https://www.linkedin.com/in/kaarelmoppel/)
+#### Contact:
+[Email](mailto:kaarel.moppel@gmail.com), Linkedin [![](/assets/img/linkedin.svg)](https://www.linkedin.com/in/kaarelmoppel/)
 
 #### Disclaimer
 
-All opinions are strictly mine and do not represent any employer.
+All opinions are strictly mine and do not represent any employer / client.
