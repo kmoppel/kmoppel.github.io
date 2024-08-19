@@ -8,6 +8,9 @@ A freelance Postgres Consultant.
 I’ve been working with Postgres daily for the last 10+ years with many very Postgres-heavy companies in Europe,
 like Zalando, BMW, Klarna, Cognite.
 
+An [interview](https://postgresql.life/post/kaarel_moppel/) with me on [postgresql.life](https://postgresql.life/) from
+some years ago. 
+
 ## Postgres Consulting services
 
 * Performance troubleshooting & tuning
