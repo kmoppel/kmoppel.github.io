@@ -99,16 +99,21 @@ Such examples are fairly nicely also brought out in the official documentation:
 
 # Lessons learnt
 
-To my astonishment - indeed, a very common (and also important, in today's security relevant world) task of listing / cloning all the privileges of a user, is probably not as trivial a task for a beginner as it should be and could probably be improved on. So let’s take it as a friendly reminder that there is always room for improvement, even for the best general purpose database system in the world. And that new blood in the (Postgres) circulation, and communicating with them, is a valuable thing.
+To my astonishment - indeed, a very common (and also important, in today's security relevant world) task of **listing /
+cloning all the privileges of a user, is not as trivial a task for a beginner as it should be** and could
+probably be improved on. So let’s take it as a friendly reminder that there is always room for improvement, even for the
+best general purpose database system in the world. And that new blood in the (Postgres) circulation, and communicating
+with them, is a valuable thing.
 
 Btw, the problem space seems is not so super new actually - from the back of my memory it also surfaced that there’s an
 extension called [pg_permissions](https://github.com/cybertec-postgresql/pg_permissions) that tackles similar…so maybe
-there’s something to it indeed and maybe some kind of new, auxiliary, task based documentation corner would make
-sense - as the current (generally very good) documentation is indeed a more classical one - syntax and feature details
+there’s something to it indeed and **maybe some kind of new, auxiliary, task based documentation corner would make
+sense** - as the current (generally very good) documentation is indeed a more classical one - syntax and feature details
 based. Reviving or better curating the unofficial [Postgres Wiki](https://wiki.postgresql.org/) could of course also be
 just enough - anything maintained, with good search is probably the key.
 
-An auxiliary learning is of course also that we shouldn’t yet paste ChatGPT generated queries directly into production 🤖
+Ah - and another fun learning is of course the fact that **we shouldn’t yet paste ChatGPT generated queries directly into
+production**, if anyone feels tempted 🤖
 
 *PS - feel free to [contact](https://kmoppel.github.io/aboutme/) me if need a bit of help with Postgres - I’ve
 been working with Postgres daily for the last 10+ years with some of the most Postgres-heavy companies in Europe.*
