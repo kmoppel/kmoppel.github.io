@@ -109,3 +109,6 @@ based. Reviving or better curating the unofficial [Postgres Wiki](https://wiki.p
 just enough - anything maintained, with good search is probably the key.
 
 An auxiliary learning is of course also that we shouldn’t yet paste ChatGPT generated queries directly into production 🤖
+
+*PS - feel free to [contact](https://kmoppel.github.io/aboutme/) me if need a bit of help with Postgres - I’ve
+been working with Postgres daily for the last 10+ years with some of the most Postgres-heavy companies in Europe.*
