@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Best pg_dump compression settings for Postgres in 2024
-cover-img: /assets/img/elephants_books_pg_dump_compression.png
+cover-img: /assets/img/elephants_books_pg_dump_compression.jpg
 tags: [postgres, pgdump, backups, performance]
 ---
 

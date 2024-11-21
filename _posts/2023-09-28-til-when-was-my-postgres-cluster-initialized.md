@@ -1,7 +1,7 @@
 ---
 layout: post
 title: TIL - When was my Postgres cluster initialized ?
-cover-img: /assets/img/til-when-was-my-postgres-cluster-initialized.png
+cover-img: /assets/img/til-when-was-my-postgres-cluster-initialized.jpg
 tags: [postgres, initdb, rds]
 ---
 

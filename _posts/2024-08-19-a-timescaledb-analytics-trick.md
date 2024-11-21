@@ -1,7 +1,7 @@
 ---
 layout: post
 title: A TimescaleDB analytics trick
-cover-img: /assets/img/timescaledb-analytics-trick.png
+cover-img: /assets/img/timescaledb-analytics-trick.jpg
 tags: [postgres, timescaledb, analytics, performance]
 ---
 

@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Best pg_basebackup compression settings for v15 and above
-cover-img: /assets/img/elephants_books_pg_basebackup_compression.png
+cover-img: /assets/img/elephants_books_pg_basebackup_compression.jpg
 tags: [postgres, pg_basebackup, backups, performance]
 ---
 
