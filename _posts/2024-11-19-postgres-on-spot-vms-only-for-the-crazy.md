@@ -31,8 +31,8 @@ Anyways, the pun of the talk was supposed to be something like that:
   clients, I took the time to put together a hopefully more widely useful utility called **[pg-spot-operator](https://github.com/pg-spot-ops/pg-spot-operator)** - which
   make using Spot + Postgres really much more fun 🥳
 * And my general take - Spot doesn't only have to mean "for fun & play" - one could also actually use it for more serious,
-  (carefully selected) workloads and save a ton of money in the process! And maybe to make the planet a bit more greener
-  in the process also, who knows…
+  (carefully selected) workloads and save a ton of money in the process! And maybe even make the planet a bit more greener,
+  who knows…
 * Also - a call for some VC dollars, euros, bitcoin - to try to build it into a real product 
 
 
