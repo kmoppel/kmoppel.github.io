@@ -7,3 +7,4 @@ gemspec
 
 gem "webrick", "~> 1.7"
 gem 'jemoji'
+gem "ffi", "< 1.17.0"
