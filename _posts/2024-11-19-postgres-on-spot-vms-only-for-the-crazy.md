@@ -13,7 +13,7 @@ I guess instead 🙂
 
 # The Lighting Talk that wasn't
 
-If have have a minute or two to spare, I'd recommend to check out the full slides at:
+If have a minute or two to spare, I'd recommend to check out the full slides at:
 [https://kmoppel.github.io/assets/media/postgres_on_spot_vms_lightining_talk.pdf](https://kmoppel.github.io/assets/media/postgres_on_spot_vms_lightining_talk.pdf)
 
 Anyways, the pun of the talk was supposed to be something like that:
@@ -41,7 +41,7 @@ Anyways, the pun of the talk was supposed to be something like that:
 
 In short pg-spot-operator does the following:
 
-1. Translates human readable hardware requirements to matching (non-human-readable) instance types
+1. Translates human-readable hardware requirements to matching (non-human-readable) instance types
 1. Launches the Spot VM
 1. Runs Ansible to set up Postgres + any extensions / other auxiliary packages
 1. Keeps checking that the VM is there
