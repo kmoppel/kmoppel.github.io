@@ -2,7 +2,7 @@
 layout: post
 title: Postgres Synchronous Replication - a 99.99% guarantee only
 cover-img: /assets/img/weights.jpg
-thumbnail-img: /assets/img/weights.png
+thumbnail-img: /assets/img/weights.jpg
 tags: [postgres, replication, ha]
 ---
 
