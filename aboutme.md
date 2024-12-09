@@ -22,6 +22,7 @@ An [interview](https://postgresql.life/post/kaarel_moppel/) with me on [postgres
 * Security / operational auditing
 * Backup / recovery procedures
 * Monitoring
+* PL/pgSQL programming
 * Data migrations
 * Trainings (also available in Estonia via [koolitus.ee](https://koolitus.ee/otsing?q=Moppel))
 * DB-related tooling development, e.g.:
