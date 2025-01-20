@@ -34,7 +34,7 @@ An [interview](https://postgresql.life/post/kaarel_moppel/) with me on [postgres
 ### Contact:
 [Email](mailto:kaarel.moppel@gmail.com), Linkedin [![](/assets/img/linkedin.svg)](https://www.linkedin.com/in/kaarelmoppel/)
 
-Book a free 30min Google Meet chat with me at [https://tinyurl.com/chatwithkaarel](https://tinyurl.com/chatwithkaarel)
+Book a free 15min Google Meet chat to clarify interest! [https://tinyurl.com/chatwithkaarel](https://tinyurl.com/chatwithkaarel)
 
 
 #### Disclaimer
