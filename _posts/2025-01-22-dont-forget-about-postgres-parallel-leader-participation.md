@@ -56,17 +56,17 @@ Full test scripts here: [https://github.com/kmoppel/parallel-leader-participatio
 
 Let’s let the summary numbers (SQL-s for analysing the results [here](https://github.com/kmoppel/parallel-leader-participation-test/blob/main/analyze_results.sql)) speak for themselves:
 
-|scale|partitions|mean_exec_time_ms| no_leader_participation_speedup_pct |
-|-----|----------|-----------------|-------------------------------------|
-|2000 |0         |5                | 18.6                                |
-|2000 |8         |6                | 20.0                                |
-|2000 |NULL      |6                | 19.3                                |
-|5000 |0         |362              | -0.6                                |
-|5000 |8         |308              | -6.1                                |
-|5000 |NULL      |335              | -3.3                                |
-|NULL |NULL      |170              | 8.0                                 |
+|scale|partitions|mean_exec_time_s| no_leader_participation_speedup_pct |
+|-----|----------|----------------|-------------------------------------|
+|2000 |0         |5               | 18.6                                |
+|2000 |8         |6               | 20.0                                |
+|2000 |NULL      |6               | 19.3                                |
+|5000 |0         |362             | -0.6                                |
+|5000 |8         |308             | -6.1                                |
+|5000 |NULL      |335             | -3.3                                |
+|NULL |NULL      |170             | 8.0                                 |
 
-Hmm, a mixed bag indeed as the documention hints...on average it slows things down for our use case. But if to try conclude
+Hmm, a mixed bag indeed as the documentation hints...on average it slows things down for our use case. But if to try conclude
 something - **the target use case for disabling “parallel_leader_participation” seems to be larger-than-cache
 working sets + partitioned tables**. In other cases we actually lose or are on the border of noise though, so some caution
 is required.
@@ -82,9 +82,10 @@ slower!** As we saw with the in-memory (<10ms response times) aggregation result
 
 But - when dealing with **out-of-RAM datasets** and machines with **higher *max_workers_per_gather* settings** (>8), and
 especially when **using partitions** - one could easily get a **small boost**! With up to 11% observed on 1 out of 6 test VMs.
+And mind you - I only tested with a relatively small, half-cached dataset.
 
-Not game-changing of course, but I think enough to give *parallel_leader_participation* an appreciative pat on the back
-now and then. **I would not recommend to enable it globally** still though, but rather per need for session / query.
+In the end not game-changing of course, but I think enough to give *parallel_leader_participation* an appreciative pat on the back
+now and then. **I would not recommend to enable it globally** still though, but rather per query or session for heavier analytics queries.
 
 
 *PS - feel free to [contact](https://kmoppel.github.io/aboutme/) me if need a bit of help with Postgres - I've put in my
