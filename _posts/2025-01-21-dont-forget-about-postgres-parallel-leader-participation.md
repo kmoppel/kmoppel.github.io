@@ -1,8 +1,8 @@
 ---
 layout: post
 title: Don't forget about the Postgres parallel leader participation setting
-cover-img: /assets/img/weights.jpg
-thumbnail-img: /assets/img/weights.jpg
+cover-img: /assets/img/parallel_leader_participation.jpeg
+thumbnail-img: /assets/img/parallel_leader_participation_thumb.jpeg
 tags: [postgres, bigdata, parallelism, testing, pgbench, ansible]
 ---
 
