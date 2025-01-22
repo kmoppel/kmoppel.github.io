@@ -78,7 +78,7 @@ use case" factor.
 # Summary
 
 There’s a reason why the “parallel_leader_participation” parameter is not enabled by default - it **can actually make things
-slower!** As we saw with the in-memory (<10ms response times) aggregation results...
+slower!** As we saw with the in-memory (<10s response times) aggregation results...
 
 But - when dealing with **out-of-RAM datasets** and machines with **higher *max_workers_per_gather* settings** (>8), and
 especially when **using partitions** - one could easily get a **small boost**! With up to 11% observed on 1 out of 6 test VMs.
