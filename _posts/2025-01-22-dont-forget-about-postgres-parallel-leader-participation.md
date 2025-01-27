@@ -77,7 +77,7 @@ use case" factor.
 
 # Summary
 
-There’s a reason why the “parallel_leader_participation” parameter is not enabled by default - it **can actually make things
+There’s a reason why the “parallel_leader_participation” parameter is enabled by default - disabling it **can actually make things
 slower!** As we saw with the in-memory (<10s response times) aggregation results...
 
 But - when dealing with **out-of-RAM datasets** and machines with **higher *max_workers_per_gather* settings** (>8), and
@@ -85,7 +85,7 @@ especially when **using partitions** - one could easily get a **small boost**! W
 And mind you - I only tested with a relatively small, half-cached dataset.
 
 In the end not game-changing of course, but I think enough to give *parallel_leader_participation* an appreciative pat on the back
-now and then. **I would not recommend to enable it globally** still though, but rather per query or session for heavier analytics queries.
+now and then. **I would not recommend to disable it globally** still though, but rather per query or session for heavier analytics queries.
 
 
 *PS - feel free to [contact](https://kmoppel.github.io/aboutme/) me if need a bit of help with Postgres - I've put in my
