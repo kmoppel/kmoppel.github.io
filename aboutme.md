@@ -14,21 +14,28 @@ An [interview](https://postgresql.life/post/kaarel_moppel/) with me on [postgres
 ## Postgres Consulting services
 
 * Performance troubleshooting & tuning
- - Also on managed clouds (RDS, Aurora, etc)
+  - Also on managed clouds (RDS, Aurora, etc)
+* Database upgrades / maintenance
+* Data pipelines
 * Performance-friendly database design
 * Data Warehouse design
-* Optimal K8s operator selection
-* HA setups / replication (Patroni)
+* K8s operator selection and troubleshooting (Patroni based only)
+* HA setups / replication (Patroni and Pacemaker based)
 * Security / operational auditing
 * Backup / recovery procedures
-* Monitoring
+* Monitoring setups
 * PL/pgSQL programming
 * Data migrations
-* Trainings (also available in Estonia via [koolitus.ee](https://koolitus.ee/otsing?q=Moppel))
+  * Also from on-prem to cloud and back
+* Trainings (also available regularly in Estonia via [koolitus.ee](https://koolitus.ee/otsing?q=Moppel))
 * DB-related tooling development, e.g.:
   - [github.com/cybertec-postgresql/pgwatch2](https://github.com/cybertec-postgresql/pgwatch2)
   - [github.com/pg-spot-ops/pg-spot-operator](https://github.com/pg-spot-ops/pg-spot-operator)
 * Rates from 150.- to 250.- EUR/h (EU invoice or Bitcoin + 5% volatility tax)
+
+### Common toolbox
+
+SQL, PL/pgSQL, dbt, Ansible, Python, Bash, Go, Docker, Kubernetes, Grafana, Prometheus, Superset
 
 
 ### Contact:

@@ -1,0 +1,76 @@
+---
+layout: post
+title: ChatGPT vs Postgres user privileges
+cover-img: /assets/img/til-when-was-my-postgres-cluster-initialized.png
+tags: [postgres, beginner, administration]
+---
+
+At last week’s pgConf.eu in Athens (which by the way - was said to be the biggest Postgres conference ever - attesting to
+the software’s undeniable success!) I got into a sort of interesting hallway discussion. I guess my chat companion was
+relatively new to the ecosystem - and said something along the lines of: “Postgres is of course generally good, but some
+simple and common tasks can still cause quite a bit of frustration - like finding out which privileges a user has and
+adding the same to a new colleague”.
+
+Whaaat, how can such an “one-liner” cause any problems?? Myself being “in the loop” for a decade plus some, was of course
+quite surprised. Yeah, assured the companion - took a lot of googling and trial-and-error to put together something to
+dig out all the different object type privileges from the internal catalogues. Hugh, just weird I thought - maybe he was
+just “too green” indeed and I directed the conversation to a next topic not to look like a smartass too much.
+
+But on the flight back home (always a nice offline thinking time), the chat somehow circled back to me - have I been around
+for too long not to really see some things anymore? Am I line-skipping the documentation, as most of the paragraphs look
+almost the same release-in-release-out? If indeed so, it could get dangerous in the long run, I thought - I could overlook
+some new but critical information at some point and one day live production hacking at a client - BOOM! So I decided I’ll
+try out a little test back home - and will try to get to the needed output via documentation and googling through the eyes
+of a beginner…
+
+# Cloning a users privileges as a Postgres greenhorn
+
+## Ok let’s start with some standard googling of course - best in incognito mode to (try to) reduce context…
+
+https://letmegooglethat.com/?q=list+all+privileges+granted+to+a+postgres+user
+
+Gives us…as first a link to an ancient unsupported version (9.0) of Postgres 😀 Which in addition is super generic and not really helpful at all. And going through the first page of links (assuming one would re-formulate the search if the first page doesn’t look good) - my mind was blown - indeed, there were no to-the-point links 🤯 Even the most usable link from Stackoverflow wasn’t directly applicable (easily scriptable / automatable) and most links were very affixed with the tables only for some reason - although there’s a bunch of other object and privileges in Postgres.
+
+OK, maybe I just picked a bad search phrase (Google probably has a “rewrite engine” similar to Postgres anyways) - let’s try a different one:
+
+https://letmegooglethat.com/?q=postgres+clone+privileges+of+a+user+to+another+user
+
+Ok, already a tad better - the 2nd suggestion at SO, mentioned indeed a way to essentially turn a user into a “role” (btw, for Postgres they’re the same basically indeed, except ROLEs can’t log in) and hand it out…but this would still not be exactly perfect - what if our original “role model” gets promoted and suddenly get privs to do anything with the data, while the new “cloned” colleague still only needs to have enough to be able to tick off Jira tickets?
+
+
+## ChatGPT to the rescue
+
+Ok maybe my googling skills are just sub-par, let’s give our new collective brain a try:
+
+```How to get a listing of all privileges assigned for a user in a PostgreSQL database?```
+
+Nice, we get some solid looking queries - half of which (2 out of 4) even work…but the results are not still actionable I would say, and only cover table privs and role memberships - what about functions, sequences, views, column privileges etc?
+OK, maybe I’m no prompt engineer - let’s try another prompt:
+
+```How to clone  all privileges assigned to a PostgreSQL user to a new user?``
+
+Hmm, a bit better - 3 out of 5 queries are even executing! Some even do what they promise they are doing 😀 Still missing column, schema and function privileges though…
+
+# How I would do it
+
+The 1st thing that came to my mind was of course:
+
+```pg_dump -s “$connstr” | grep 'TO slonik;$' | sed ‘s/slonik/newuser/g’ | psql “$connstr”```
+
+This assumes though that we have the Postgres server packages installed - which might be not too common nowadays - so maybe a more DevOpsy example would look something like:
+
+```docker run --rm postgres pg_dump -s “$connstr” | grep 'TO slonik;$' | sed ‘s/slonik/newuser/g’ | psql “$connstr”```
+
+Which assumes anyways that we have some DBA exposure and know about some non-query tools…
+
+By the way - my second idea was to search the PostgreSQL non-official Wiki for keywords like “copy / clone privileges”...but that also didn’t produce anything sadly.
+
+# Lessons learnt
+
+To my astonishment - indeed, a very common (and important, in today's security relevant world) task of listing / cloning all the privileges of a user, is probably not as trivial a task for a beginner as it should be and could probably be improved on. So let’s take it as a friendly reminder that there is always room for improvement, even for the best general purpose database system in the world. And that new blood in the (Postgres) circulation, and communicating with them, is a valuable thing.
+
+Btw, the problem space seems to be now so super new actually - from the back of my memory it also surfaced that there’s an extension called “pg_permissions”  that tries to tackle the space, and there’s an ancient thread on the Postgres mailing list…so maybe there’s indeed something the complaints of the “greenhorn” and some kind of new, auxiliary, common task based (maintained) documentation would make sense - as the current one is a more classical syntax and feature details based.
+
+
+*Also on that note - feel free to [contact](https://kmoppel.github.io/aboutme/) me if need a hand with Postgres - I’ve
+been working with Postgres daily for the last 10+ years with some of the most Postgres-heavy companies in Europe.*
