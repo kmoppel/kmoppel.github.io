@@ -1,6 +1,6 @@
 ---
 layout: page
-title: About me
+title: Contact & Consulting
 ---
 
 A database and Postgres specialist.
@@ -18,13 +18,14 @@ An [interview](https://postgresql.life/post/kaarel_moppel/) with me on [postgres
 * Database upgrades / maintenance
 * Data pipelines
 * Performance-friendly database design
+* Scale-up and scale-out (partitioning, sharding, Citus)
 * Data Warehouse design
 * K8s operator selection and troubleshooting (Patroni based only)
 * HA setups / replication (Patroni and Pacemaker based)
-* Security / operational auditing
+* Security and operational auditing / due-diligence
 * Backup / recovery procedures
 * Monitoring setups
-* PL/pgSQL programming
+* PL/pgSQL and PL/Python programming
 * Data migrations
   * Also from on-prem to cloud and back
 * Trainings (also available regularly in Estonia via [koolitus.ee](https://koolitus.ee/otsing?q=Moppel))
