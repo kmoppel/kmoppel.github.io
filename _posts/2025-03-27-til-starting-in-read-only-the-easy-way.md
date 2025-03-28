@@ -54,11 +54,15 @@ And a bit scarily actually - it's done automatically on *psql* session start whe
 in any other [default location](https://www.postgresql.org/docs/17/app-psql.html#APP-PSQL-FILES-PSQLRC) for that matter.
 
 This haha, reminds me of a mean prank I once pulled on a new junior colleague. Namely - on a shared Postgres server that we both administered,
-I suddenly planted a rigged *.psqlrc* file to output something like:
+I suddenly planted a rigged *.psqlrc* file to auto-execute something like:
 
 ```
-SELECT 'Instance shutdown signal received, Rebooting in 3 seconds ... press CTRL-ALT-9 + CTRL-ALT-5 to abort' AS "Postmaster process" ;
+\pset tuples_only on
+SELECT 'WARNING: Instance shutdown triggered, rebooting in 3 seconds ...' ;
+SELECT 'Press CTRL-ALT-9 + CTRL-ALT-5 to abort' ;
 SELECT pg_sleep(3);
+SELECT 'Just joking ;)' ;
+\pset tuples_only off
 ```
 
 and then watched him across the desk suddenly starting to hit the keyboard frantically :D Fun times. But the lesson is actually
@@ -102,7 +106,13 @@ postgres=# create table t1();
 ERROR:  cannot execute CREATE TABLE in a read-only transaction
 ```
 
-And why the joy? Although yes, 95% of time I rely on good ol' *psql* (backed up by *DBeaver* in case some data needs to
+And why the joy?
+
+Firstly - one doesn't have to rely on *.psqlrc* for automatic read-only mode, meaning one can disable it with the *-X* flag if
+needed (remember, can be sort of unsafe on shared systems as shown above). And one doesn't need a separate "read only"
+*.psqlrc* config file anymore.
+
+And secondly - although 95% of time I rely on good ol' *psql* (backed up by *DBeaver* in case some data needs to
 be fixed as well) the nice thing about this approach is that its client agnostic! As setting startup
 parameters is actually a driver level feature. So one could as well set it from a JDBC connect string:
 
