@@ -82,7 +82,8 @@ Btw, my `.psqlrc` looks usually something like that: [https://gist.github.com/km
 ## A special-purpose read-only user 
 
 On some rare occasions, I've actually went as far as to create a temporary "gelded" user - that can only read. This comes
-handy when having to use some other query tools or apps to communicate with the database. It goes something like that:
+handy when having to use some other query tools or apps that you don't fully trust, to communicate with the database.
+It goes something like that:
 
 ```
 CREATE USER kaarel_ro IN ROLE pg_read_all_data, pg_monitor ;
