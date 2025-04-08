@@ -32,7 +32,10 @@ An [interview](https://postgresql.life/post/kaarel_moppel/) with me on [postgres
 * DB-related tooling development, e.g.:
   - [github.com/cybertec-postgresql/pgwatch2](https://github.com/cybertec-postgresql/pgwatch2)
   - [github.com/pg-spot-ops/pg-spot-operator](https://github.com/pg-spot-ops/pg-spot-operator)
-* Rates from 150.- to 250.- EUR/h (EU invoice or Bitcoin + 5% volatility tax)
+* Rates from 125.- to 250.- EUR/h depending on the task
+  - EU invoice or Bitcoin + 5% volatility tax
+  - Min. 4h billed
+  - Most tasks (like solving perf problems, or setting up a HA cluster) take a day or few usually
 
 ### Common toolbox
 
