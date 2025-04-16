@@ -36,6 +36,7 @@ An [interview](https://postgresql.life/post/kaarel_moppel/) with me on [postgres
   - EU invoice or Bitcoin + 5% volatility tax
   - Min. 4h billed
   - Most tasks (like solving perf problems, or setting up a HA cluster) take a day or few usually
+  - Travel to well-connected European hubs not a problem
 
 ### Common toolbox
 
