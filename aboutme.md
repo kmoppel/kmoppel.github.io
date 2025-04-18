@@ -46,6 +46,8 @@ SQL, PL/pgSQL, dbt, Ansible, Python, Bash, Go, Docker, Kubernetes, Grafana, Prom
 ### Contact:
 [Email](mailto:kaarel.moppel@gmail.com), Linkedin [![](/assets/img/linkedin.svg)](https://www.linkedin.com/in/kaarelmoppel/)
 
+SSH pub key: [https://github.com/kmoppel.keys](https://github.com/kmoppel.keys)
+
 PGP signature: 49FF30B0B0FB0BFBD36F31D21F2274D154F37E71
 
 Book a free 15min Google Meet chat to clarify interest! [https://tinyurl.com/chatwithkaarel](https://tinyurl.com/chatwithkaarel)
