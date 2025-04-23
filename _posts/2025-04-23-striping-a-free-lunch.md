@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Striping Postgres data volumes - a free lunch?
-cover-img: /assets/img/scaling.jpg
+cover-img: /assets/img/ebs-striping-test/disks_wired.jpeg
 tags: [postgres, performance, ebs]
 ---
 
