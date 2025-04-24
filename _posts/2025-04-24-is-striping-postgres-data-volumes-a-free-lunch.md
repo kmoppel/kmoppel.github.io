@@ -95,7 +95,8 @@ To get a comparative feel I also did:
 
 * One run with *io2* + 40K provisioned IOPS.
 * One run with *gp3* at default, BUT on a high 256GB RAM [x2iedn.2xlarge](https://instances.vantage.sh/aws/ec2/x2iedn.2xlarge)
-  instance, so that effectively it's an in-memory test (which is rarely a real life use case of course)
+  instance, so that effectively it's an in-memory test - which is rarely a real life use case of course - but do note
+  that money-wise the in-memory instance is more than 2x cheaper than the 40K provisioned IOPS, so some food for thought here...
 * One run on my local workstation with a modern NVMe drive (2TB Samsung 990 EVO Plus). To get the same RAM-to-disk had to
   also 2x the pgbench scale to 16K.
 
