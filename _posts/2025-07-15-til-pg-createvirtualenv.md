@@ -1,7 +1,7 @@
 ---
 layout: post
 title: TIL - Debian comes with a pg_createvirtualenv wrapper!
-cover-img: /assets/img/til_psql_read_only.jpeg
+cover-img: /assets/img/pg_createvirtualenv.jpg
 tags: [postgres, psql, testing, debian, ubuntu]
 ---
 
@@ -12,7 +12,7 @@ So while minding some other common Postgres business, I double-tapped "Tab" to c
 (a tool used to check the integrity of backups / FS snapshots taken using [`pg_basebackup`](https://www.postgresql.org/docs/current/app-pgbasebackup.html)) ...
 and suddenly, something named [`pg_virtualenv`](https://manpages.ubuntu.com/manpages/focal/man1/pg_virtualenv.1.html) popped up!
 
-Wow, what is this I thought? Ok, let's see - typed in `man pg_virtualenv` (`man` btw, is an ancient Linux command pre-dating
+Wow, what's that I thought? Ok, let's see - typed in `man pg_virtualenv` (`man` btw, is an ancient Linux command pre-dating
 ChatGPT & Co, to read up on how some utilities or syscalls work) ... and mind blown! 🤯
 
 # Ok so what does it provide? 
@@ -34,7 +34,7 @@ So how did I spin up quick temp instances in the past? By either:
 
 ```commandline
 /usr/lib/postgresql/15/bin/initdb -D /tmp/pg15 && \
-/usr/lib/postgresql/15/bin/pg_ctl  -D /tmp/pg15 -l /tmp/pg15/logfile -o "-p 7432 --unix-socket-directories='/tmp' --shared_preload_libraries='pg_stat_statements'" start
+/usr/lib/postgresql/15/bin/pg_ctl -D /tmp/pg15 -l /tmp/pg15/logfile -o "-p 7432 --unix-socket-directories='/tmp' --shared_preload_libraries='pg_stat_statements'" start
 ```
 Not exactly complex or awful as well, but one has to also mind the cleanup phase when done with larger instances... 
 
@@ -97,10 +97,10 @@ Some light "gripes":
   - Fine if not by default, but there really could be some flag at least 
 * The default port numbers are "too close" to the permanent instances I think - just +1 added to the last used port (i.e. 5432 or 5433 usually)
   - I'd prefer something from another "namespace", so I specify something like `-o port=6666` as well usually
-* And well if to already start complaining - when `fsync=off`, there's little point of having `full_page_writes=on` as well...
-* `wal_level` could be `minimal` as well to save on those data loading bytes, noone is gonna create replicas for a throwaway instance...
+* When `fsync=off`, there's little point of having `full_page_writes=on` as well...
+* Also `wal_level` could be `minimal` to save on those data loading bytes, no one is going to create replicas for a throwaway instance...
 * Default server / error log access is a bit inconvenient (possible via `/proc/$postmaster_pid/fd/1`), so that for
-  non-trivial use cases you'd add for example `-o logging_collector=on`
+  non-trivial use cases you'd add `-o logging_collector=on` as well.
 
 So if planning to load quite a bit of data, and do some query performance troubleshooting as well, you're better off with something like:
 ```
