@@ -1,6 +1,6 @@
 ---
 layout: post
-title: TIL - Debian comes with a pg_createvirtualenv wrapper!
+title: TIL - Debian comes with a pg_virtualenv wrapper!
 cover-img: /assets/img/pg_createvirtualenv.jpg
 tags: [postgres, psql, testing, debian, ubuntu]
 ---
@@ -38,7 +38,7 @@ So how did I spin up quick temp instances in the past? By either:
 ```
 Not exactly complex or awful as well, but one has to also mind the cleanup phase when done with larger instances... 
 
-# A quick howto on pg_createvirtualenv
+# A quick howto on pg_virtualenv
 
 Couldn't get much easier really ... for when I need to check if some monitoring query works with Postgres 15: 
 
@@ -107,7 +107,7 @@ So if planning to load quite a bit of data, and do some query performance troubl
 pg_virtualenv -o shared_preload_libraries='pg_stat_statements' -o full_page_writes=off -o wal_level=minimal -o max_wal_senders=0 -o random_page_cost=1.25 psql
 ```
 
-*PS* The biggest footgun with `pg_createvirtualenv` probably is that if you accidentally exit your main `psql` session - it's "sayonara" :)
+*PS* The biggest footgun with `pg_virtualenv` probably is that if you accidentally exit your main `psql` session - it's "sayonara" :)
 
 # The Postgres ecosystem is a beast
 
