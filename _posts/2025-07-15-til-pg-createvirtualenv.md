@@ -17,7 +17,8 @@ ChatGPT & Co, to read up on how some utilities or syscalls work) ... and mind bl
 
 # Ok so what does it provide? 
 
-In short - it's an instant throwaway Postgres instance at your fingertips, for those more temporary tasks.
+In short - it's an instant throwaway Postgres shell at your fingertips, for those more temporary tasks. With an almost
+normal Postgres instance behind it as well of course, for app usage etc.
 
 # What did I use before?
 
