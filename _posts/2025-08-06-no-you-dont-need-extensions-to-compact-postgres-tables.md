@@ -57,7 +57,7 @@ So how does it work? The steps are approximately like that:
 ## The general process
 
 1. Ensure some “last modified” column exists on the “to-be-compacted” table, and is indexed for fast “give me all last changes” queries.
-  - Create on for the duration of the process if missing, and use a partial index  
+  - Create one for the duration of the process if missing, and use a partial index  
 1. Install a trigger to log deletions (if any). Not needed in case of timestamped soft-deletes.
 1. Create a new clone table with identical structure to replace the old bloated table.
 1. Fill / snapshot the new table with current data from the “old” table via a plain SELECT - which leaves table bloat behind.
