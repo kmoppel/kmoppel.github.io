@@ -117,7 +117,8 @@ VACUUM FULL duration 227 s
 Some more knowledgeable Postgres users looking at the sample script might wonder why I didn’t use the PostgreSQL
 [MERGE](https://www.postgresql.org/docs/current/sql-merge.html) command?
 Isn’t it exactly built for such data rectification tasks? With v17 additions, covering also deletes, indeed - would be
-very convenient...but sadly way slower in practice - and the documentation mentions that as well.
+very convenient...but sadly way slower in practice, as generates plans suitable for more "big data" merges - and the
+documentation mentions that as well.
 
 
 *PS - feel free to [contact](https://kmoppel.github.io/aboutme/) me if need a bit of help with Postgres - I've put in my
