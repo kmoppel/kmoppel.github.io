@@ -38,7 +38,7 @@ real-life "looking" dataset and with more or less realistic data flows, i.e. a g
 randomness. And you want it fast!
 
 And this is where toolkits like [sysbench-tpcc](https://github.com/Percona-Lab/sysbench-tpcc), etc come in. Which already
-simplify things to a nice and practical level. There's a bunch of others of benchmarking tools out there as well of course,
+simplifies things to a nice and practical level. There's a bunch of others of benchmarking tools out there as well of course,
 but this is the one I've used mostly - *kudos* to the authors as well! Still...humans always
 seem to find ways to complain and not be 100% happy with any given piece of software 😀 Welcome [pgbench-tpcc-like](https://github.com/kmoppel/pgbench-tpcc-like)!    
 
@@ -79,7 +79,8 @@ pgbench -n -c 32 -T 1800 -P 300 -f new_order.pgbench@45 -f payment_transaction.p
 
 *PS* Although not as write-heavy as the built-in `pgbench` workloads, (both the default *tpcb-like* and also *simple-update*)
 the TPC-C workload is still pretty write heavy, with the following approximate distribution of queries - SELECT 66%,
-UPDATE 18%, INSERT 15%, DELETE 1%.
+UPDATE 18%, INSERT 15%, DELETE 1% - so you might want decide to increase the weights a bit for "order_status" and "stock_check"
+transactions for more read-heavy / web use cases.
 
 **All kinds of feedback very much appreciated!** 
 
