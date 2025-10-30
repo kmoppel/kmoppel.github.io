@@ -3,7 +3,7 @@ layout: page
 title: Contact & Consulting
 ---
 
-A database and Postgres specialist.
+A database and Postgres specialist. MSc in Computer Systems Engineering.
 
 I’ve put in my 20K+ hours with many Postgres-heavy businesses in Europe, like Zalando, BMW, Klarna, Cognite - and thus have developed
 a pretty good gut feeling of what works reasonably well for some purpose and what not.
@@ -28,6 +28,7 @@ An [interview](https://postgresql.life/post/kaarel_moppel/) with me on [postgres
 * PL/pgSQL and PL/Python programming
 * Data migrations
   * Also from on-prem to cloud and back
+  * Oracle to PostgreSQL migrations
 * Trainings (also available regularly in Estonia via [koolitus.ee](https://koolitus.ee/otsing?q=Moppel))
 * DB-related tooling development, e.g.:
   - [github.com/cybertec-postgresql/pgwatch2](https://github.com/cybertec-postgresql/pgwatch2)
@@ -36,12 +37,12 @@ An [interview](https://postgresql.life/post/kaarel_moppel/) with me on [postgres
 * Rates from 125.- to 250.- EUR/h depending on the task / urgency
   - EU invoice or Bitcoin + 5% volatility tax
   - Min. 4h billed
-  - Most tasks (like solving perf problems, or setting up a HA cluster) take a day or few usually
+  - Most tasks (like solving perf problems, or setting up a HA cluster, with documentation) take 1-3d usually
   - Travel to well-connected European hubs not a problem
 
 ### Common toolbox
 
-SQL, PL/pgSQL, dbt, Ansible, Python, Bash, Go, Docker, Kubernetes, Grafana, Prometheus, Superset
+SQL, PL/pgSQL, dbt, Ansible, IaC / Terraform, Python, Bash, Go, Docker, Kubernetes, Grafana, Prometheus
 
 
 ### Contact:
