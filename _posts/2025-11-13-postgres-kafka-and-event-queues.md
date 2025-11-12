@@ -15,12 +15,12 @@ and food for thought. I especially liked that the original one tried to be open 
 Gunnar's take was maybe a bit too morbid for my taste, of course 😀
 
 To recap — the main question in the debate was whether Postgres is generally *“good enough”* to implement a low-to-medium
-volume event queue or a pub-sub system. The general sentiment from [Hacker News](https://news.ycombinator.com/item?id=45747018) readers
+volume event queue or even a pub-sub system. The general sentiment from [Hacker News](https://news.ycombinator.com/item?id=45747018) readers
 at least was that unless scale truly demands Kafka, Postgres is indeed good enough — and many teams plain overestimate their
 scaling needs and don’t actually need Kafka’s distributed complexity.
 
-**Spoiler:** there’s obviously no definitive answer as to when one should use a “proper” database for something — there’s
-a reason why we have so many purpose-specific databases: relational, event logs, analytical column stores, key-value, time-series, ledger, graph, hierarchical, document, blob, text search, vector, …
+**Spoiler:** there’s obviously no definitive answer as to when one should use a “proper” database for something — and there
+sure are reasons why we have so many purpose-specific databases: relational, event logs, analytical column stores, key-value, time-series, ledger, graph, hierarchical, document, blob, text search, vector, …
 
 Anyway, below are some thoughts that came to mind — I can’t go too deep on Kafka though, as I’m just not qualified enough.
 
