@@ -12,7 +12,7 @@ in the recent [Postgres Weekly](https://postgresweekly.com/issues/623), as a res
 
 But first off — I’d like to laud the authors of both pieces. They’re well-argued reads with a crazy amount of good tidbits
 and food for thought. I especially liked that the original one tried to be open and repeatable and actually tested things.
-Gunnar's take was maybe a bit too morbid for my taste, of course 😀
+Gunnar's take was maybe a bit too morbid for my taste, of course 🐘
 
 To recap — the main question in the debate was whether Postgres is generally *“good enough”* to implement a low-to-medium
 volume event queue or even a pub-sub system. The general sentiment from [Hacker News](https://news.ycombinator.com/item?id=45747018) readers
@@ -138,10 +138,18 @@ pretty exactly on which operations (INSERT) or columns (WHERE) to listen on.
 # But Still — Who “Wins”?
 
 As humans, we’re always looking for simplifications.
-Having seen and implemented some pretty crazy things on top of Postgres, I tend to say that Postgres is *mostly* good enough for many purposes, for many years.
+Having seen and implemented some pretty crazy things on top of Postgres, I tend to say that Postgres is *mostly* good
+enough for many purposes, for many years.
 
 For queuing — with some work, no doubt.
 For pub-sub — less so.
+
+And honestly if the below mind-boggling statistics from Stanislav's blog post, in context of comparing to Kafka, are
+even remotely correct - the bar is very low to begin with.
+
+> A report by RedPanda found that ~55% of respondents use Kafka for < 1 MB/s.
+> Kafka-vendor Aiven similarly shared that 50% of their Kafka deployments
+> have an ingest rate of below 10 MB/s.
 
 Of course, if you already know you’ll need to scale like crazy, go with something else.
 Kafka, while not directly comparable, is good but adds operational overhead for sure — at least based on experience from my previous startup.
