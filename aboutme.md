@@ -16,6 +16,7 @@ An [interview](https://postgresql.life/post/kaarel_moppel/) with me on [postgres
 * Performance troubleshooting & tuning
   - Also on managed clouds (RDS, Aurora, etc)
 * Database upgrades / maintenance
+* Hardware or Cloud provider selection / benchmarking
 * Data pipelines
 * Performance-friendly database design
 * Scale-up and scale-out (partitioning, sharding, Citus)
@@ -28,10 +29,10 @@ An [interview](https://postgresql.life/post/kaarel_moppel/) with me on [postgres
 * PL/pgSQL and PL/Python programming
 * Data migrations
   * Also from on-prem to cloud and back
-  * Oracle to PostgreSQL migrations
-* Trainings (also available regularly in Estonia via [koolitus.ee](https://koolitus.ee/otsing?q=Moppel))
+  * Oracle / MySQL to PostgreSQL migrations
+* Trainings (also available regularly in Estonia via [koolitus.ee](https://koolitus.ee/koolitused/koolitus-postgresql-andmebaasid-arendajale))
 * DB-related tooling development, e.g.:
-  - [github.com/cybertec-postgresql/pgwatch2](https://github.com/cybertec-postgresql/pgwatch2)
+  - [github.com/cybertec-postgresql/pgwatch](https://github.com/cybertec-postgresql/pgwatch)
   - [github.com/pg-spot-ops/pg-spot-operator](https://github.com/pg-spot-ops/pg-spot-operator)
   - [github.com/kmoppel/pgweasel](https://github.com/kmoppel/pgweasel)
 * Rates from 125.- to 250.- EUR/h depending on the task / urgency
