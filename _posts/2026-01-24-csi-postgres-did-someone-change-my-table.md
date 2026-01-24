@@ -43,7 +43,8 @@ Now it was of course easy to do a PITR restore on the side (the WAL LSN numbers 
 as some monitoring was in place storing timestamped `pg_current_wal_lsn()` converted into a numeric via `pg_wal_lsn_diff()`) and
 extract the old correct table contents.
 
-*PS!* A side learning from here - good monitoring can turn out to be extremely valuable for random ad-hoc tasks!
+*PS!* A side learning from here - good monitoring can turn out to be extremely valuable for random ad-hoc tasks! Here
+though as an alternative the approximate change time can be seen from archived WAL timestamps as well. 
 
 
 # The more humane way for the future - track_commit_timestamp
