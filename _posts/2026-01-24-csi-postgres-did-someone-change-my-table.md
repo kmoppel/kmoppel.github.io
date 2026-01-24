@@ -103,8 +103,6 @@ will result in a full table scan, but this could be avoided if we have some inde
 For an instance level indication (remember - Postgres WAL and transaction counters are shared between databases) take
 a look at `pg_last_committed_xact()` instead.
 
-NB! Commit transaction ID's (`xid`-s) can be also **out-of-order**, so looking only at *max()* with *pg_xact_commit_timestamp()*
-might not be the best idea in practice...
 
 ## Caveats of *track_commit_timestamp*
 
