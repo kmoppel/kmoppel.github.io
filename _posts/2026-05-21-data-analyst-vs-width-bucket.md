@@ -35,8 +35,8 @@ By the way, the extra bucket problem would disappear automatically if the 2nd [`
 form with array input would be used. This path though seems is not that popular on the interwebs - as probably results
 in a much longer SQL...which for the fun of it by the way I tested on my own skin [here](https://gist.github.com/kmoppel/1511c651fa3bb635727f0b8b817c8b9a#file-width_bucket_arr_input-sql) :)
 
-So to rectify the issues, find below an improved `width_bucket()` implementation based on the always useful “pgbench” schema, with an easily
-configurable bucket count and max “bar chart” width.
+So to rectify the issues, find below an improved `width_bucket()` version (which probably could be simplified even more)
+based on the always useful “pgbench” schema, with an easily configurable bucket count and max “bar chart” width in the 1st CTE.
 
 ## SQL for simple equally chunked and fast bucketing  
 
