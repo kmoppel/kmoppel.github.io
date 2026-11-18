@@ -1,6 +1,6 @@
 ---
 layout: post
-title: A public safety reminder - large Postgres instances love huge pages
+title: A public perf reminder - large Postgres instances love huge pages
 cover-img: /assets/img/huge_pages.jpeg
 tags: [postgres, performance, kernel, hugepages, pgbench]
 ---
